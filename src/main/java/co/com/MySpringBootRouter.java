@@ -13,8 +13,8 @@ public class MySpringBootRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("timer:hello?period={{timer.period}}").routeId("hello")
-            .transform().method("myBean", "saySomething")
+        from("timer:hello?period=2000").routeId("hello")
+            .transform().constant("foo")
             .filter(simple("${body} contains 'foo'"))
                 .to("log:foo")
             .end()
