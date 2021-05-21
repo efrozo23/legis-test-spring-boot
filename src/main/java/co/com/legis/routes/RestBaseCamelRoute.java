@@ -47,8 +47,8 @@ public class RestBaseCamelRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-//        ExceptionHandling exHandling = new ExceptionHandling();
-//        exHandling.AttachException(this);
+        ExceptionHandling exHandling = new ExceptionHandling();
+        exHandling.AttachException(this);
 
         // @formatter:off
 //        restConfiguration().apiContextRouteId("restConfiguration")

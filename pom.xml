@@ -239,6 +239,9 @@
 				<includes>
 					<include>application.properties</include>
 					<include>response.json</include>
+					<include>Rest-Models-2.0.53.jar</include>
+					<include>Rest-Utils-2.0.36.jar</include>
+					<include>SyncModel-2.0.0.1.jar</include>
 				</includes>
 			</resource>
 
@@ -264,6 +267,9 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
