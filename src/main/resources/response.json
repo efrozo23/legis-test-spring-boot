@@ -1,0 +1,29 @@
+{
+    "_links": {
+        "about": {}
+    },
+    "title": "INTERNAL_SERVER_ERROR",
+    "type": "https://httpstatuses.com/500",
+    "success": "false",
+    "status": 500,
+    "detail": "Error en el proceso",
+    "source_system": "SSO : https://pre.sso.legis.com.co/auth/realms/Legis/ssoapi/createsubscription/client/AmbitoJuridico",
+    "datetime": "2021-05-21T09:22:32Z",
+    "ids": [
+        {
+            "name": "collect_num",
+            "value": 2
+        },
+        {
+            "name": "email",
+            "value": "carlos.avella123@legis.com.co"
+        }
+    ],
+    "errors": [
+        {
+            "about": "Error",
+            "message": "No se creo la suscripcion en scala, no existe el sku o no tiene accesos"
+        }
+    ],
+    "message_id": "7e0d2377-ad86-4c97-a47e-cc0e1589c1bd"
+}

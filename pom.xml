@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring.boot-version>2.4.4</spring.boot-version>
+		<spring.boot-version>2.1.11.RELEASE</spring.boot-version>
 		<surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
 	</properties>
 
@@ -33,7 +33,7 @@
 			<dependency>
 				<groupId>org.apache.camel.springboot</groupId>
 				<artifactId>camel-spring-boot-dependencies</artifactId>
-				<version>3.9.0</version>
+				<version>3.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -46,16 +46,34 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+			<!-- <exclusions> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
+			<!-- </exclusion> -->
+
+			<!-- <exclusion> -->
+			<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
+			<!-- <artifactId>jackson-core</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
+			<!-- <artifactId>jackson-databind</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
+			<!-- <artifactId>jackson-annotations</artifactId> -->
+			<!-- </exclusion> -->
+
+			<!-- </exclusions> -->
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-undertow</artifactId> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-undertow</artifactId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -70,6 +88,101 @@
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-stream-starter</artifactId>
+		</dependency>
+
+		<!-- rest-base -->
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20201115</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-bean-validator</artifactId>
+		</dependency>
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-sql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jsonpath</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-gson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>co.com.legis.util</groupId>
+			<artifactId>Rest-Models</artifactId>
+			<version>2.0.53</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/Rest-Models-2.0.53.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>co.com.legis.util</groupId>
+			<artifactId>Rest-Utils</artifactId>
+			<version>2.0.36</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/Rest-Utils-2.0.36.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>co.com.legis.util</groupId>
+			<artifactId>SyncModels</artifactId>
+			<version>2.0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/SyncModel-2.0.0.1.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-jackson-starter</artifactId>
+
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-velocity</artifactId>
 		</dependency>
 
 		<!-- Test -->
@@ -125,10 +238,10 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>application.properties</include>
-					
+					<include>response.json</include>
 				</includes>
 			</resource>
-			
+
 		</resources>
 		<plugins>
 			<plugin>
@@ -157,20 +270,20 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.plugin.version}</version>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>io.fabric8</groupId> -->
-<!-- 				<artifactId>fabric8-maven-plugin</artifactId> -->
-<!-- 				<version>4.4.1</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>fmp</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>resource</goal> -->
-<!-- 							<goal>build</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>4.4.1</version>
+				<executions>
+					<execution>
+						<id>fmp</id>
+						<goals>
+							<goal>resource</goal>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
@@ -183,6 +296,34 @@
 			<id>my-repo2</id>
 			<name>your custom repo</name>
 			<url>https://repo.fusesource.com/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>fuse-public-repository</id>
+			<name>FuseSource Community Release Repository</name>
+			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>red-hat-ga-repository</id>
+			<name>Red Hat GA Repository</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+		</repository>
+		<repository>
+			<id>local-maven-repo</id>
+			<url>file:///maven-repo/</url>
 		</repository>
 	</repositories>
 </project>
